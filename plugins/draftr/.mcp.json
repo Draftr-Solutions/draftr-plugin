@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "draftr": {
+      "type": "http",
+      "url": "https://app.draftr.top/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.token}"
+      }
+    }
+  }
+}

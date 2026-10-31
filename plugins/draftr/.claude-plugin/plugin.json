@@ -1,0 +1,29 @@
+{
+  "name": "draftr",
+  "displayName": "Draftr",
+  "version": "0.1.0",
+  "description": "Create, edit, review and export Draftr designs from your agent through the Draftr MCP server.",
+  "author": {
+    "name": "Draftr Solutions",
+    "email": "support@draftr.top",
+    "url": "https://draftr.top"
+  },
+  "homepage": "https://draftr.top",
+  "repository": "https://github.com/Draftr-Solutions/draftr-plugin",
+  "license": "MIT",
+  "keywords": ["design", "ui", "prototyping", "mcp"],
+  "icon": "./assets/logo.png",
+  "documentationUrl": "https://github.com/Draftr-Solutions/draftr-plugin/tree/main/plugins/draftr",
+  "supportUrl": "https://draftr.top",
+  "privacyPolicyUrl": "https://draftr.top/privacy",
+  "termsOfServiceUrl": "https://draftr.top/terms",
+  "userConfig": {
+    "token": {
+      "type": "string",
+      "title": "Draftr access token",
+      "description": "Create one in app.draftr.top under Account settings, Agent access tokens. Choose Read and edit documents if the agent should change designs.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

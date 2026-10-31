@@ -1,0 +1,17 @@
+{
+  "name": "draftr",
+  "description": "The Draftr plugin for Claude Code",
+  "owner": {
+    "name": "Draftr Solutions",
+    "email": "support@draftr.top",
+    "url": "https://draftr.top"
+  },
+  "plugins": [
+    {
+      "name": "draftr",
+      "source": "./plugins/draftr",
+      "description": "Create, edit, review and export Draftr designs from your agent.",
+      "category": "design"
+    }
+  ]
+}

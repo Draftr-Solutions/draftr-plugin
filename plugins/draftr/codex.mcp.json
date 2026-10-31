@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "draftr": {
+      "type": "http",
+      "url": "https://app.draftr.top/mcp",
+      "bearer_token_env_var": "DRAFTR_TOKEN"
+    }
+  }
+}

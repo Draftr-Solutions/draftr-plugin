@@ -1,0 +1,22 @@
+{
+  "name": "@draftr-solutions/plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "check:text": "node scripts/check-text-style.mjs",
+    "test": "node --test",
+    "sync:rules": "node scripts/sync-rules.mjs",
+    "validate:claude": "claude plugin validate --strict . && claude plugin validate --strict plugins/draftr",
+    "check": "pnpm format:check && pnpm check:text && pnpm test"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}
