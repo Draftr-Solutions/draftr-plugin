@@ -9,14 +9,14 @@ Draftr documents are structured: pages hold frames and layers with stable IDs. P
 
 ## Before you start
 
-The Draftr tools come from the plugin's `draftr` MCP server. If they are missing or fail with `401`, the access token is missing, expired or revoked. The user creates one at app.draftr.top under Account settings, Agent access tokens. Then:
+The Draftr tools come from the plugin's `draftr` MCP server, and the user signs in through the browser. If they are missing or fail with `401`, the user is not signed in, or disconnected this application. Then:
 
-- Claude Code: run `/plugin configure draftr@draftr` and paste the token there.
-- Codex: set the `DRAFTR_TOKEN` environment variable and restart Codex.
+- Claude Code: run `/mcp`, choose `draftr` and sign in.
+- Codex: run `codex mcp login draftr`, or select Authenticate in the desktop app.
 
-Never ask the user to paste a token into the chat, and never write one to a file.
+Never ask the user to paste a token or a password into the chat, and never write one to a file.
 
-`403 INSUFFICIENT_SCOPE` means the token is read-only: say so and ask for a token with "Read and edit documents". Quota errors mean the account's daily limit of agent calls is reached: stop and tell the user.
+`403 INSUFFICIENT_SCOPE` means this connection is read-only: say so and ask the user to connect again and allow editing. Quota errors mean the account's daily limit of agent calls is reached: stop and tell the user.
 
 ## Find the design
 

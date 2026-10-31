@@ -36,22 +36,26 @@ test('both clients install the same plugin at the same version', () => {
   }
 });
 
-test('Claude Code keeps the token in a sensitive option', () => {
+test('Claude Code signs in with OAuth and holds no token', () => {
   const { draftr } = json('plugins/draftr/.mcp.json').mcpServers;
-  assert.deepEqual(draftr, {
-    type: 'http',
-    url: mcpUrl,
-    headers: { Authorization: 'Bearer ${user_config.token}' },
-  });
-  assert.equal(claude.userConfig.token.sensitive, true);
+  // An Authorization header would stop Claude Code from falling back to OAuth.
+  assert.deepEqual(draftr, { type: 'http', url: mcpUrl });
+  assert.equal(claude.userConfig, undefined);
 });
 
-test('Codex reads the token from the environment', () => {
+test('Codex signs in with OAuth and holds no token', () => {
   assert.equal(codex.mcpServers, './codex.mcp.json');
   assert.deepEqual(json('plugins/draftr/codex.mcp.json').mcpServers.draftr, {
     type: 'http',
     url: mcpUrl,
-    bearer_token_env_var: 'DRAFTR_TOKEN',
+  });
+});
+
+test('the OpenAI listing declares OAuth without credentials', () => {
+  assert.deepEqual(json('plugins/draftr/mcp.json').mcpServers.draftr, {
+    type: 'streamable-http',
+    url: mcpUrl,
+    extensions: { 'com.openai': { auth: { type: 'oauth', client: { mode: 'cimd' } } } },
   });
 });
 
@@ -59,7 +63,7 @@ test('nothing in the plugin carries a token or a local address', () => {
   for (const file of files(plugin).filter((path) => /\.(json|md)$/.test(path))) {
     const text = readFileSync(file, 'utf8');
     const name = relative(root, file);
-    assert.doesNotMatch(text, /Bearer (?!\$\{user_config\.token\})[A-Za-z0-9_-]{8,}/, name);
+    assert.doesNotMatch(text, /Bearer [A-Za-z0-9_-]{8,}/, name);
     assert.doesNotMatch(text, /127\.0\.0\.1|localhost/, name);
   }
 });

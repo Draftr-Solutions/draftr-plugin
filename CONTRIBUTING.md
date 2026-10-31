@@ -14,12 +14,10 @@ Project decisions live in `frontend/docs/decisions.md` (D86 for this plugin), pr
 
 ## Testing against the sandbox
 
-Copy the repository, point `url` in both MCP files at `http://127.0.0.1:3002/mcp`, then add the copy as a local marketplace in each client and install the plugin:
+Copy the repository, point `url` in the MCP files at `http://127.0.0.1:3002/mcp`, then add the copy as a local marketplace in each client and install the plugin. Sign in through the browser with the account in the ignored `backend/.local/agent-sandbox.json`, and do not print its password:
 
-- Claude Code: pipe `{"token":"..."}` to `claude plugin configure draftr@draftr --values-stdin`.
-- Codex: set `DRAFTR_TOKEN`. `codex exec` cancels `apply_commands`, which the server marks as destructive, because it cannot ask for approval; test edits in an interactive session.
-
-Take the token from the ignored `backend/.local/agent-sandbox.json` and do not print it.
+- Claude Code: `claude mcp login <server>`. It needs a real terminal.
+- Codex: `codex mcp login <server>`. `codex exec` cancels `apply_commands`, which the server marks as destructive, because it cannot ask for approval; test edits in an interactive session.
 
 ## Releases
 
