@@ -84,6 +84,10 @@ If a Draftr tool call is refused or cancelled, stop and tell the user: the clien
 
 Ask before you delete a page or layers you did not create, or before you restyle the whole file.
 
+## Make it good
+
+Before you build a screen from scratch or restyle one, read [references/design-quality.md](references/design-quality.md) and set up tokens and text styles first. Small edits to an existing design follow what is already there.
+
 ## Build fast and stay editable
 
 - Start pages from blocks: `list_blocks`, then `insert_block`. Stack them in a column auto-layout frame and edit copy, images and tokens.

@@ -79,6 +79,14 @@ test('the skill names itself and links its rules', () => {
   const skill = readFileSync(join(plugin, 'skills/design/SKILL.md'), 'utf8');
   assert.match(skill, /^---\nname: design\ndescription: .{50,}\n---\n/);
   assert.match(skill, /\(references\/editing-rules\.md\)/);
+  assert.match(skill, /\(references\/design-quality\.md\)/);
+});
+
+test('the design quality reference stays short and credits its source', () => {
+  const reference = join(plugin, 'skills/design/references/design-quality.md');
+  // The skill tells agents to read this file whole, so its size is a cost on every design task.
+  assert.ok(statSync(reference).size < 16 * 1024);
+  assert.match(readFileSync(join(plugin, 'THIRD_PARTY_NOTICES.md'), 'utf8'), /taste-skill/);
 });
 
 test('the editing rules match the MCP server when the backend is checked out', (context) => {
