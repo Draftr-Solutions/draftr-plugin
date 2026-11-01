@@ -10,9 +10,9 @@ export const instructionsPath = fileURLToPath(
 
 /** The rules agents get from the server, one bullet per rule, without internal decision numbers. */
 export function renderRules(source) {
-  const rules = [...source.matchAll(/^ {2}'(.*)',$/gm)]
-    .map((match) => match[1].replaceAll("\\'", "'").replaceAll(/ \(D\d+(?:, D\d+)*\)/g, ''))
-    .filter((rule) => !rule.includes('local development foundation'));
+  const rules = [...source.matchAll(/^ {2}'(.*)',$/gm)].map((match) =>
+    match[1].replaceAll("\\'", "'").replaceAll(/ \(D\d+(?:, D\d+)*\)/g, ''),
+  );
   if (!rules.length) throw new Error('No rules found in the MCP instructions.');
   return [
     '# Draftr editing rules',
