@@ -1,5 +1,6 @@
 # Generated files and local configuration.
 node_modules/
+dist/
 .env*
 pnpm-lock.yaml
 plugins/draftr/skills/design/references/editing-rules.md

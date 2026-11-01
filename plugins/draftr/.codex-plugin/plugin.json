@@ -1,6 +1,6 @@
 {
   "name": "draftr",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Create, edit, review and export Draftr designs from your agent through the Draftr MCP server.",
   "author": {
     "name": "Draftr Solutions",
@@ -15,12 +15,13 @@
   "mcpServers": "./codex.mcp.json",
   "interface": {
     "displayName": "Draftr",
-    "shortDescription": "Design UI in Draftr from your agent",
+    "shortDescription": "Design UI with your agent",
     "longDescription": "Connect Codex to your Draftr account to read designs, build screens from components and starter blocks, answer comments, wire prototypes and export finished work. People watching the file see the agent in presence while it works.",
     "developerName": "Draftr Solutions",
     "category": "Design",
     "capabilities": ["Interactive", "Read", "Write"],
     "websiteURL": "https://draftr.top",
+    "supportURL": "https://draftr.top/support",
     "privacyPolicyURL": "https://draftr.top/privacy",
     "termsOfServiceURL": "https://draftr.top/terms",
     "defaultPrompt": [
@@ -29,6 +30,7 @@
       "Answer the open comments in my Draftr design"
     ],
     "brandColor": "#000000",
+    "brandColorDark": "#FFFFFF",
     "composerIcon": "./assets/logo.png",
     "logo": "./assets/logo.png",
     "screenshots": []

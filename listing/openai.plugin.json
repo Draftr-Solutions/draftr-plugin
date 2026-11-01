@@ -1,0 +1,109 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "draftr",
+  "version": "0.4.1",
+  "description": "Create, edit, review and export Draftr designs from your agent through the Draftr MCP server.",
+  "author": {
+    "name": "Draftr Solutions",
+    "email": "support@draftr.top",
+    "url": "https://draftr.top"
+  },
+  "homepage": "https://draftr.top",
+  "repository": "https://github.com/Draftr-Solutions/draftr-plugin",
+  "license": "MIT",
+  "keywords": ["design", "ui", "prototyping", "mcp"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Draftr",
+        "shortDescription": "Design UI with your agent",
+        "longDescription": "Connect your agent to your Draftr account to read designs, build screens from components and starter blocks, answer comments, wire prototypes and export finished work. Designs stay real, editable layers, and people in the file see the agent in presence while it works.",
+        "developerName": "Draftr Solutions",
+        "category": "Design",
+        "capabilities": ["Interactive", "Read", "Write"],
+        "websiteURL": "https://draftr.top",
+        "supportURL": "https://draftr.top/support",
+        "privacyPolicyURL": "https://draftr.top/privacy",
+        "termsOfServiceURL": "https://draftr.top/terms",
+        "defaultPrompt": [
+          "List my Draftr designs and summarize the latest one",
+          "Add a pricing section to my landing page in Draftr",
+          "Answer the open comments in my Draftr design"
+        ],
+        "brandColor": "#000000",
+        "brandColorDark": "#FFFFFF",
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png",
+        "screenshots": []
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List the designs in the account",
+              "prompt": "List my Draftr designs.",
+              "tools_triggered": ["list_documents"],
+              "expected_behavior": "Returns the designs of the account by name, including Harbor landing page and Harbor mobile app."
+            },
+            {
+              "description": "Describe an existing design",
+              "prompt": "Open the Draftr design Harbor mobile app and describe its screen.",
+              "tools_triggered": ["list_documents", "get_document", "get_design_screenshot"],
+              "expected_behavior": "Finds the design, reads it and describes the settings screen and its rows. Nothing in the design changes."
+            },
+            {
+              "description": "Apply feedback from a comment",
+              "prompt": "Read the open comments in the Draftr design Harbor landing page, make the requested change, reply and resolve the thread.",
+              "tools_triggered": [
+                "list_documents",
+                "list_comments",
+                "start_agent_task",
+                "apply_commands",
+                "reply_comment",
+                "resolve_comment",
+                "complete_agent_task"
+              ],
+              "expected_behavior": "Changes the headline as the comment asks, replies saying what changed and resolves the thread."
+            },
+            {
+              "description": "Build a new screen",
+              "prompt": "Create a new Draftr design with a simple pricing page for a bookkeeping service and show me a screenshot.",
+              "tools_triggered": [
+                "create_document",
+                "start_agent_task",
+                "insert_block",
+                "apply_commands",
+                "get_design_screenshot",
+                "complete_agent_task"
+              ],
+              "expected_behavior": "Creates a new design with a pricing page made of editable layers and shows a screenshot of it."
+            },
+            {
+              "description": "Export a finished design",
+              "prompt": "Export the Draftr design Harbor mobile app as a PNG.",
+              "tools_triggered": ["list_documents", "get_document", "export_design"],
+              "expected_behavior": "Returns a PNG file of the settings screen."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A general question unrelated to design",
+              "prompt": "What is the capital of France?"
+            },
+            {
+              "description": "A coding task with no design",
+              "prompt": "Write a Python function that sorts a list of numbers."
+            },
+            {
+              "description": "A request for another design product",
+              "prompt": "Open my latest file in Figma and rename it."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "First public version: read, build, review and export Draftr designs through OAuth."
+      }
+    }
+  }
+}
