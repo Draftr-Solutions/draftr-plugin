@@ -1,6 +1,6 @@
 {
   "name": "@draftr-solutions/plugin",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.33.0",
@@ -8,6 +8,7 @@
     "node": ">=24"
   },
   "scripts": {
+    "package:openai": "node scripts/package-openai.mjs",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "check:text": "node scripts/check-text-style.mjs",

@@ -59,6 +59,24 @@ test('the OpenAI listing declares OAuth without credentials', () => {
   });
 });
 
+test('the OpenAI listing fits the portal limits', () => {
+  const listing = json('listing/openai.plugin.json');
+  const openai = listing.extensions['com.openai'];
+  assert.equal(listing.version, claude.version);
+  assert.equal(listing.name, 'draftr');
+  assert.ok(openai.interface.displayName.length <= 30);
+  assert.ok(openai.interface.shortDescription.length <= 30);
+  assert.ok(openai.interface.longDescription.length <= 4000);
+  assert.ok(codex.interface.shortDescription.length <= 30);
+  for (const url of ['websiteURL', 'supportURL', 'privacyPolicyURL', 'termsOfServiceURL'])
+    assert.match(openai.interface[url], /^https:\/\//);
+  assert.ok(openai.interface.defaultPrompt.every((prompt) => prompt.length <= 128));
+  assert.equal(openai.review.test_cases.positive.length, 5);
+  assert.equal(openai.review.test_cases.negative.length, 3);
+  for (const test of openai.review.test_cases.positive)
+    assert.ok(test.tools_triggered.length && test.expected_behavior);
+});
+
 test('nothing in the plugin carries a token or a local address', () => {
   for (const file of files(plugin).filter((path) => /\.(json|md)$/.test(path))) {
     const text = readFileSync(file, 'utf8');
