@@ -18,6 +18,12 @@ Never ask the user to paste a token or a password into the chat, and never write
 
 `403 INSUFFICIENT_SCOPE` means this connection is read-only: say so and ask the user to connect again and allow editing. Quota errors mean the account's daily limit of agent calls is reached: stop and tell the user.
 
+## Ask the user
+
+Before you start a new design, ask what the user would prefer whenever the brief leaves it open, such as the style, the content or how far to take the work. Ask a few short questions in one message, and skip what the brief already answers.
+
+While you work, stop and ask when you are unsure about a choice that changes the result, instead of guessing. Do not ask about small details you can decide yourself. If nobody can answer, as in `codex exec`, state what you assumed and go on.
+
 ## Find the design
 
 1. `list_documents` shows recent designs. A link such as `https://app.draftr.top/editor?document=<id>` holds the ID.
@@ -83,15 +89,6 @@ Retry after a network failure only with the same `operationId` and the same requ
 If a Draftr tool call is refused or cancelled, stop and tell the user: the client may be waiting for their approval of that tool. Do not reach the design another way, such as through a browser.
 
 Ask before you delete a page or layers you did not create, or before you restyle the whole file.
-
-## Make it good
-
-Small edits to an existing design follow what is already there. Before you build a screen from scratch or restyle one, read [references/design-quality.md](references/design-quality.md), then settle two things, unless the brief or the user's earlier answers already do:
-
-- Style: offer two or three directions that fit the brief, such as calm minimal, bold and colorful or industrial brutalist, or let the user name one or share a reference.
-- Depth: Quick for a single simple page or a fast idea, Full for a product, several screens or a design people will keep editing.
-
-Ask both in one short message, recommend an option for each, and wait for the answer before any Draftr call. If nobody can answer, as in `codex exec`, state your choices and go on.
 
 ## Build fast and stay editable
 
