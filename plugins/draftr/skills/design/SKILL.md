@@ -84,6 +84,15 @@ If a Draftr tool call is refused or cancelled, stop and tell the user: the clien
 
 Ask before you delete a page or layers you did not create, or before you restyle the whole file.
 
+## Make it good
+
+Small edits to an existing design follow what is already there. Before you build a screen from scratch or restyle one, read [references/design-quality.md](references/design-quality.md), then settle two things, unless the brief or the user's earlier answers already do:
+
+- Style: offer two or three directions that fit the brief, such as calm minimal, bold and colorful or industrial brutalist, or let the user name one or share a reference.
+- Depth: Quick for a single simple page or a fast idea, Full for a product, several screens or a design people will keep editing.
+
+Ask both in one short message, recommend an option for each, and wait for the answer before any Draftr call. If nobody can answer, as in `codex exec`, state your choices and go on.
+
 ## Build fast and stay editable
 
 - Start pages from blocks: `list_blocks`, then `insert_block`. Stack them in a column auto-layout frame and edit copy, images and tokens.
