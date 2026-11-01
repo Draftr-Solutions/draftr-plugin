@@ -7,12 +7,20 @@ Models fall back on the same few looks. These rules push against that. They are 
 Before the first command, state in one line what you are making: the kind of screen, who it is for, the tone and any hard constraint. Let the audience choose the look, not your habits.
 
 - Existing design: read its tokens, styles and components with `get_document`, look at `get_design_screenshot`, and extend what is there. Do not restyle a file unless asked.
-- Ask one question only when two readings of the brief would give clearly different designs. Otherwise state your reading and go on.
 - Public services, health, finance and accessibility-first products put clarity above style.
+
+## Depth
+
+The look rules below apply at both depths, since good type, color and copy cost nothing extra. Depth decides how much structure you build.
+
+- Quick: start from blocks and set only their shared tokens to your palette, with raw values where nothing repeats. Skip components, breakpoints and state variants unless asked. Check one screenshot of the finished page, and fix what fails.
+- Full: follow everything here, including the system, components and variants for repeats, breakpoints, states and the whole final check.
+
+If a Quick design grows into several screens, offer to move it to Full.
 
 ## Set the system first
 
-Do this in the first batch, before any screen.
+At Full depth, do this in the first batch, before any screen.
 
 - Colors: `token.set` one family of neutrals, one accent and only the status colors the screen needs. Give dark mode its own `token.mode.set`.
 - Numbers: one spacing scale, such as 4, 8, 12, 16, 24, 32, 48, 64, 96, and one corner scale. Decide whether corners are sharp, soft or pill, and keep to it.
@@ -96,7 +104,7 @@ Look at `get_design_screenshot` for every frame, and again with `breakpoints` fo
 
 ## Styles on request
 
-Read this part only when the user names one of these directions, and do not mix them in one design.
+Read this part only when the chosen direction is one of these, and do not mix them in one design. For any other direction, apply the general rules above in that spirit.
 
 ### Calm minimal
 

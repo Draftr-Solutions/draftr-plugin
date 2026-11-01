@@ -80,6 +80,7 @@ test('the skill names itself and links its rules', () => {
   assert.match(skill, /^---\nname: design\ndescription: .{50,}\n---\n/);
   assert.match(skill, /\(references\/editing-rules\.md\)/);
   assert.match(skill, /\(references\/design-quality\.md\)/);
+  assert.match(skill, /- Style: .*\n- Depth: Quick .* Full /);
 });
 
 test('the design quality reference stays short and credits its source', () => {
