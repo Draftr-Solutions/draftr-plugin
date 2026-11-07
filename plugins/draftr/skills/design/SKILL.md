@@ -94,6 +94,7 @@ Ask before you delete a page or layers you did not create, or before you restyle
 
 - Start pages from blocks: `list_blocks`, then `insert_block`. Stack them in a column auto-layout frame and edit copy, images and tokens.
 - Use `search_icons` and `insert_icon` for icons and `import_svg` for SVG files. Do not draw icons point by point.
+- To start from an existing page, `import_html` renders a public URL or HTML text and adds it as one frame of editable layers; `selector` takes one part of a long page.
 - Use `list_fonts` for the 34 built-in families. Upload a font only when nothing is close.
 - Use components, variants and properties for repeats, collections for data lists, and tokens and styles instead of raw values.
 - Use auto layout, not absolute positions, for anything that should reflow. Give desktop screens breakpoints.
@@ -105,6 +106,13 @@ Ask before you delete a page or layers you did not create, or before you restyle
 - Prototypes: `get_prototype`, `update_prototype`, and `get_prototype_frame` to check a screen at a moment.
 - Matching a reference: `upload_document_asset`, set the frame `reference`, then `compare_with_reference` after each round and work on its `worstRegions`.
 - Delivery: `export_design` writes PNG, SVG or PDF.
+
+## Design and code
+
+- Design to code: `export_code` returns HTML and CSS (`target: "html"`) or React components with CSS modules (`target: "react"`) for up to 20 layers. Write `files` as they are and copy `binaries` (design images, catalog fonts) next to them; `includeImages` returns the images as base64. Check `skipped` and tell the user what did not export.
+- Pass `layerIds: true` whenever the code may change and come back: every element then carries `data-draftr` with its layer ID, and `draftr.json` records the design, its revision and the layer of each file. Keep those attributes when you edit the code.
+- Design changed: export again and carry the difference into the code with a diff; do not overwrite edits the user made by hand.
+- Code changed: send the rendered page back with `import_html` and `targetNodeId` set to the frame from `draftr.json`. Use a public `url` of the running page when there is one; otherwise send `html` with the CSS inlined in a `<style>` element (for React, the rendered HTML of the page). The frame changes only where the code changed, unchanged code changes nothing, and visible layers the code dropped come back in `missing`: delete them with `removeMissing` only after the user agrees.
 
 ## Full rules
 
